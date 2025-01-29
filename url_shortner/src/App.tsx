@@ -3,6 +3,8 @@ import { useState } from "react";
 import "./index.css";
 import { ThreeDots } from "react-loader-spinner";
 import { toast } from "react-toastify";
+import { FaLinkedin, FaSquareWhatsapp } from "react-icons/fa6";
+import { FaGithubSquare, FaInstagramSquare } from "react-icons/fa";
 
 function App() {
   const [input, setInput] = useState("");
@@ -43,66 +45,108 @@ function App() {
 
   return (
     <>
-      <div className="h-full w-full flex flex-col items-center justify-center min-h-[35rem] min-w-[25rem]">
-        <h1 className="text-4xl font-bold sm:text-2xl md:text-3xl">URL Shortener</h1>
-        <input
-          type="text"
-          className="border-2 border-gray-500 p-2 rounded-lg w-80 mt-4"
-          placeholder="Enter URL"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          disabled={loading}
-        />
-        <button
-          className="bg-blue-500 text-white p-2 rounded-lg mt-4"
-          onClick={fetchData}
-          disabled={loading}
-        >
-          Shorten URL
-        </button>
+      <div className="flex flex-col h-screen w-full min-h-[35rem] min-w-[25rem]">
+        <div className="h-full w-full flex flex-col flex-1 items-center justify-center ">
+          <h1 className="text-4xl font-bold sm:text-2xl md:text-3xl">
+            URL Shortener
+          </h1>
+          <input
+            type="text"
+            className="border-2 border-gray-500 p-2 rounded-lg w-80 mt-4"
+            placeholder="Enter URL"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            disabled={loading}
+          />
+          <button
+            className="bg-blue-500 text-white p-2 rounded-lg mt-4"
+            onClick={fetchData}
+            disabled={loading}
+          >
+            Shorten URL
+          </button>
 
-        {loading && (
-          <div className="flex flex-col items-center">
-            <p className="text-blue-500 mt-4">Shortening your URL...</p>
-            <ThreeDots
-              visible={true}
-              height="80"
-              width="80"
-              color="blue"
-              radius="9"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-            />
-          </div>
-        )}
+          {loading && (
+            <div className="flex flex-col items-center">
+              <p className="text-blue-500 mt-4">Shortening your URL...</p>
+              <ThreeDots
+                visible={true}
+                height="80"
+                width="80"
+                color="blue"
+                radius="9"
+                ariaLabel="three-dots-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+              />
+            </div>
+          )}
 
-        {newURL && (
-          <div className="flex flex-col items-center">
-            <a
-              href={newURL}
-              target="_blank"
-              rel="noreferrer"
-              className="text-blue-500 mt-4"
-            >
-              {newURL}
-            </a>
-            <button
-              className="
+          {newURL && (
+            <div className="flex flex-col items-center">
+              <a
+                href={newURL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-500 mt-4"
+              >
+                {newURL}
+              </a>
+              <button
+                className="
               bg-blue-500
               text-white
               p-2
               rounded-lg
               mt-4"
-              onClick={() => {
-                navigator.clipboard.writeText(newURL);
-                toast.success("Copied to clipboard!");
-              }}
+                onClick={() => {
+                  navigator.clipboard.writeText(newURL);
+                  toast.success("Copied to clipboard!");
+                }}
+              >
+                Copy to clipboard
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div className="flex justify-around items-center w-full p-5 shadow-inner h-[6rem] footer flex-wrap">
+          <h2>
+            Made with 💙 by{" "}
+            <a
+              href="https://dipanshu-06-portfolio.netlify.app/"
+              className="font-bold hover:italic hover:!text-blue-500 transition-all duration-200 ease-in-out"
             >
-              Copy to clipboard
-            </button>
+              Dipanshu
+            </a>
+          </h2>
+          <div className="flex justify-around items-center text-4xl space-x-3 ">
+            <a
+              href="https://www.linkedin.com/in/dipanshu-mishra-696a0622a"
+              className="hover:!text-blue-500 transition-all duration-200 ease-in-out hover:scale-105"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://github.com/Dipanshu0612"
+              className="hover:!text-blue-500 transition-all duration-200 ease-in-out hover:scale-105"
+            >
+              <FaGithubSquare />
+            </a>
+            <a
+              href="https://api.whatsapp.com/send?phone=918485974624&text=Hello, more information!"
+              className="hover:!text-blue-500 transition-all duration-200 ease-in-out hover:scale-105"
+            >
+              <FaSquareWhatsapp />
+            </a>
+            <a
+              href="https://www.instagram.com/_.dipanshu._06/"
+              className="hover:!text-blue-500 transition-all duration-200 ease-in-out hover:scale-105"
+            >
+              <FaInstagramSquare />
+            </a>
           </div>
-        )}
+        </div>
       </div>
     </>
   );
