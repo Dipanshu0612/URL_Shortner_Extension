@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "URL Shortner",
+  "description": "This extension will take in long URLs and shorten them into sharable URLs.",
+  "version": "0.0.1",
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "icons/icon128.png",
+    "default_title":"URL Shortner"
+  },
+  "permissions": ["activeTab"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "24": "icons/icon24.png",
+    "32": "icons/icon32.png",
+    "64": "icons/icon64.png",
+    "128": "icons/icon128.png"
+  },
+  "host_permissions": ["https://*/*", "http://*/*"]
+}
